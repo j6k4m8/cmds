@@ -1,0 +1,15 @@
+#!/usr/bin/python
+
+import requests, sys
+
+req = sys.argv
+
+zipc = req[1] if len(req) > 1 else '07876'
+url = "http://api.openweathermap.org/data/2.5/weather?zip="
+
+res = requests.get(url + zipc + "&units=imperial")
+json = res.json()
+
+print(str(json['main']['temp']) + ": " + json['weather'][0]['main'])
+
+
